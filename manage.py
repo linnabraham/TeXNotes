@@ -262,7 +262,7 @@ class Helper:
 
         to_delete= []
         for i, line in enumerate(lines):
-            m = re.search(f'(\\externaldocument\\[)(.+?)(\\-\\]\\{{){filename}(\\}})', line)
+            m = re.search(rf'(\\externaldocument\[)(.+?)(\-\]\{{){filename}(\}})', line)
             if m:
                 to_delete.append(i)
 

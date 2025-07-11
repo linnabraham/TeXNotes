@@ -6,6 +6,10 @@
 \RequirePackage{amssymb}
 \RequirePackage{mathrsfs}
 \RequirePackage{tikz-cd}
+%My custom packages
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{tipa} % for phonetic symbols
 
 \RequirePackage{amsmath}
 
@@ -72,3 +76,4 @@
 
 \ProcessOptions
 
+\DeclareUnicodeCharacter{0259}{\textschwa} % ə

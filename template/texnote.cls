@@ -31,7 +31,7 @@
 %setup geometry
 \RequirePackage{geometry}
 \RequirePackage{graphicx}
-\graphicspath{{../../resources}}
+\graphicspath{{../../resources}{../figures}}
 
 
 

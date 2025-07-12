@@ -52,6 +52,11 @@
 \newcommandx{\improve}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
 \newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
 
+% have title and author's full name appear in in-text citation
+\newrobustcmd*{\citefirstlastauthor}{\AtNextCite{\DeclareNameAlias{labelname}{given-family}}\citeauthor}
+\newcommand{\citetitlebyauthor}[2][]{
+    \citetitle{#2} by \citefirstlastauthor[#1]{#2}
+}
 \usepackage{catchfilebetweentags}
 
 %Fix newlines with catchfilebetweentags

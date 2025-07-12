@@ -7,11 +7,20 @@
 \RequirePackage{mathrsfs}
 \RequirePackage{tikz-cd}
 %My custom packages
+\RequirePackage{xargs}
+\RequirePackage[dvipsnames]{xcolor}
+\RequirePackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+\RequirePackage{booktabs}
+\RequirePackage{mfirstuc}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{tipa} % for phonetic symbols
+\RequirePackage{courier} % Or any other monospace package you like
+\RequirePackage{listings} % For code formatting
 
 \RequirePackage{amsmath}
+
+\RequirePackage{physics} % for \dv command
 
 \RequirePackage{xr-hyper} 
 %hyperlinks and referencing
@@ -75,5 +84,33 @@
 \makeatother
 
 \ProcessOptions
+\newcommandx{\info}[2][1=]{\todo[linecolor=violet,backgroundcolor=violet!25,bordercolor=violet,#1]{#2}}
+\newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+\newcommandx{\unsure}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+\newcommandx{\improve}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+\newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
+
+% have title and author's full name appear in in-text citation
+\newrobustcmd*{\citefirstlastauthor}{\AtNextCite{\DeclareNameAlias{labelname}{given-family}}\citeauthor}
+\newcommand{\citetitlebyauthor}[2][]{
+    \citetitle{#2} by \citefirstlastauthor[#1]{#2}
+}
+
+\newcommand{\ttt}[1]{\texttt {#1}}
 
 \DeclareUnicodeCharacter{0259}{\textschwa} % ə
+
+\lstset{
+    language=Python,
+    inputencoding=utf8,
+    extendedchars=true,
+	basicstyle=\ttfamily\bfseries\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{orange},
+    showstringspaces=false,
+    breaklines=true
+}
+
+\newcommand{\intlim}[4]{\int_{#1}^{#2} #3 \, \mathrm{d}{#4}}
+\newcommand{\x}{\times}

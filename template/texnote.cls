@@ -1,27 +1,18 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{texnote}
-\LoadClass{article} 
+\LoadClass[12pt]{article} 
+\RequirePackage[
+  top=2cm,
+  bottom=2cm,
+  left=2cm,
+  right=2.5cm
+]{geometry}  % reduces margins slightly
 \RequirePackage{amsthm}
 \RequirePackage{amssymb}
 \RequirePackage{mathrsfs}
 \RequirePackage{tikz-cd}
-%My custom packages
-\RequirePackage{xargs}
-\RequirePackage[dvipsnames]{xcolor}
-\RequirePackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
-\RequirePackage{booktabs}
-\RequirePackage{mfirstuc}
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[T1]{fontenc}
-\RequirePackage{tipa} % for phonetic symbols
-\RequirePackage{courier} % Or any other monospace package you like
-\RequirePackage{listings} % For code formatting
-
 \RequirePackage{amsmath}
-
-\RequirePackage{physics} % for \dv command
-
 \RequirePackage{xr-hyper} 
 %hyperlinks and referencing
 \RequirePackage{hyperref} 
@@ -44,9 +35,8 @@
 
 
 
-\RequirePackage[style=alphabetic]{biblatex}
-\addbibresource{../bibliography.bib}
-
+\RequirePackage[style=authoryear, mincitenames=1, maxcitenames=2, backend=biber]{biblatex}
+\addbibresource{../../bibliography.bib}
 
 \hypersetup{
     colorlinks = true,
@@ -77,6 +67,27 @@
 \newcommand{\transclude}[2][note]{\ExecuteMetaData[../notes/slipbox/#2.tex]{#1}}
 
 \usepackage{catchfilebetweentags}
+%My custom packages
+\RequirePackage{xargs}
+\RequirePackage[dvipsnames]{xcolor}
+\RequirePackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+\RequirePackage{booktabs}
+\RequirePackage{mfirstuc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{tipa} % for phonetic symbols
+% \RequirePackage{courier} % Or any other monospace package you like
+\RequirePackage{listings} % For code formatting
+\RequirePackage{gensymb} % for \degree command
+\RequirePackage{physics} % for \dv command
+\usepackage{comment} % to use the comment environment
+\usepackage[normalem]{ulem} % to use \uline
+\usepackage{enumitem}
+\usepackage{minted}
+\usemintedstyle{friendly}
+\usepackage{tcolorbox}
+\tcbuselibrary{listings}
+
 
 %currentdoc command for make4ht fix 
 \makeatletter
@@ -88,7 +99,7 @@
 \newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
 \newcommandx{\unsure}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
 \newcommandx{\improve}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
-\newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
+\newcommandx{\thiswontshow}[2][1=]{\todo[disable,#1]{#2}}
 
 % have title and author's full name appear in in-text citation
 \newrobustcmd*{\citefirstlastauthor}{\AtNextCite{\DeclareNameAlias{labelname}{given-family}}\citeauthor}
@@ -114,3 +125,21 @@
 
 \newcommand{\intlim}[4]{\int_{#1}^{#2} #3 \, \mathrm{d}{#4}}
 \newcommand{\x}{\times}
+\newcommand{\code}[1]{\texttt{#1}}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\newcommand{\HI}{H\,\textsc{i}}
+\newcommand{\HII}{\textsc{H\,ii}}
+\newcommand{\zotcite}[2]{
+\href{#2}{#1}
+}
+\newcommand{\changethis}[2][change this]{\uline{#2} \improve{#1}}
+\newcommand{\teal}[1]{\textcolor{teal}{#1}}
+\newcommand{\orange}[1]{\textcolor{orange}{#1}}
+\newcommand{\purple}[1]{\textcolor{purple}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\green}[1]{\textcolor{green}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\amber}[1]{\textcolor{amber}{#1}}

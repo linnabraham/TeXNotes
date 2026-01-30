@@ -256,7 +256,6 @@ class Helper:
             print(f'No note with filename {filename} exists in db')
 
 
-
         with open('notes/documents.tex', 'r') as f:
             lines = f.readlines()
 
@@ -274,7 +273,6 @@ class Helper:
         with open('notes/documents.tex', 'w') as f:
             for line in lines:
                 f.write(line)
-
 
         print(f'Delete notes/slipbox/{filename}.tex? (y/n)')
         if Helper.__getyesno():
@@ -847,6 +845,7 @@ class Helper:
 
         output = bytearray()
         input_file = os.path.join('projects', project_folder, texfile)
+        print(f"{input_file=}")
 
         with open(input_file, 'r') as f:
             for line in f:
@@ -854,8 +853,10 @@ class Helper:
                 output.extend((re.sub(r'\\transclude(\[[^]]+\]+)?\{([^}]+)\}', '', line).strip() + '\n').encode())
                 external_documents = re.finditer(r'\\transclude(\[([^]]+)\])?\{([^}]+)\}', line)
                 for document in external_documents:
+                    print(f"{document=}")
                     tag = document.group(2)
                     document = document.group(3)
+                    print(f"{document=}")
                     if tag is None:
                         tag = 'note'
 

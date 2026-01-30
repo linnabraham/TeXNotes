@@ -81,7 +81,7 @@ class Helper:
         except database.Note.DoesNotExist:
             try: 
                 note = database.Note.get(reference=reference_name)
-                raise ValueError(f'A note with reference {reference} already exists in the database. If this is not the case then run manage.py synchronize to update the database, and then try again. If the problem persists check the documents.tex file is correctly setup')
+                raise ValueError(f'A note with reference {reference_name} already exists in the database. If this is not the case then run manage.py synchronize to update the database, and then try again. If the problem persists check the documents.tex file is correctly setup')
                 return
             except database.Note.DoesNotExist:
                 pass 

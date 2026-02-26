@@ -11,7 +11,6 @@ markdown/*
 renders/*
 resources/*
 *.db
-*.bib
 
 network.html
 
